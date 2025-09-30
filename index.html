@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">Ad-Din Collections</div>
+
+  <!-- Hamburger menu button -->
+  <button class="hamburger" id="hamburger">
+    ☰
+  </button>
+
+ <!-- Nav links -->
+<ul class="nav-links" id="nav-links">
+    <li><a href="#shop">Shop</a></li>
+    <li><a href="perfumes.html">Perfumes</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a></li>
+  </ul>
+</nav>
+
+<!-- Header -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Ad-Din Collections</h1>
+    <p>Elegant Arabic Outfits for Every Occasion</p>
+    <a href="#shop" class="btn">Shop Now</a>
+  </div>
+</header>
+
+<!-- Products -->
+<section id="shop" class="products">
+  <h2>Our Collection</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250" alt="Outfit 1">
+      <h3>Classic Thobe</h3>
+      <p>£49.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250" alt="Outfit 2">
+      <h3>Embroidered Abaya</h3>
+      <p>£69.99</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="https://via.placeholder.com/250" alt="Outfit 3">
+      <h3>Jalabiya Luxe</h3>
+      <p>£59.99</p>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+</section>
+
+<!-- Cart Section -->
+<section id="cart" class="cart">
+  <h2>Your Cart 🛒</h2>
+  <p>Items in cart: <span id="cart-count">0</span></p>
+  <ul id="cart-items"></ul>
+  <p id="cart-total">Total: £0.00</p>
+  <a href="#" class="btn">Go to Checkout</a>
+</section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+<script src="script.js"></script>  
+</body>
+</html>
