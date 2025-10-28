@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Candles | Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    Free Delivery with orders over £40
+  </div>
+
+  <!-- Header with Logo -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </div>
+
+      <!-- Right icons: search + cart -->
+      <div class="right-icons">
+        <div class="search-container">
+          <button id="search-toggle" class="search-icon">🔍</button>
+          <form id="search-form" class="search-bar hidden">
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button type="submit">🔍</button>
+          </form>
+        </div>
+        <a href="cart.html" id="cart-icon">
+          🛒 <span id="nav-cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Page Header -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Luxury Oud Scented Candles</h1>
+      <p>Bring warmth and fragrance into your home</p>
+    </div>
+  </section>
+
+  <!-- Candle Products -->
+  <section class="products">
+    <h2>Our Candles</h2>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="pics/oud-candle.jpg" alt="Oud Candle">
+        <h3>Oud Scented Candle</h3>
+        <p>£18</p>
+        <button class="add-to-cart"
+          data-name="Oud Scented Candle"
+          data-price="18"
+          data-image="pics/oud-candle.jpg">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="pics/amber-candle.jpg" alt="Amber Candle">
+        <h3>Amber Musk Candle</h3>
+        <p>£15</p>
+        <button class="add-to-cart"
+          data-name="Amber Musk Candle"
+          data-price="15"
+          data-image="pics/amber-candle.jpg">Add to Cart</button>
+      </div>
+
+      <div class="product-card">
+        <img src="pics/rose-candle.jpg" alt="Rose Candle">
+        <h3>Rose & Sandalwood Candle</h3>
+        <p>£16</p>
+        <button class="add-to-cart"
+          data-name="Rose & Sandalwood Candle"
+          data-price="16"
+          data-image="pics/rose-candle.jpg">Add to Cart</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+  <script>
+    document.getElementById('search-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      if (query.includes('perfume')) {
+        window.location.href = 'Fragrances.html';
+      } else if (query.includes('oud')) {
+        window.location.href = 'Oud.html';
+      } else if (query.includes('thobe') || query.includes('thobes')) {
+        window.location.href = 'thobes.html';
+      } else if (query.includes('keffiyeh') || query.includes('keffiyehs')) {
+        window.location.href = 'Keffiyehs.html';
+      } else if (query.includes('candle') || query.includes('candles')) {
+        window.location.href = 'Candles.html';
+      } else {
+        alert('No results found for: ' + query);
+      }
+    });
+  </script>
+</body>
+</html>

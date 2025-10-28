@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oud Collection | Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Banner -->
+<div class="top-banner">
+  Free Delivery with orders over £40
+</div>
+
+<!-- Header with Logo -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </div>
+
+      <!-- Right icons: search + cart -->
+      <div class="right-icons">
+        <div class="search-container">
+          <button id="search-toggle" class="search-icon">🔍</button>
+          <form id="search-form" class="search-bar hidden">
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button type="submit">🔍</button>
+          </form>
+        </div>
+        <a href="cart.html" id="cart-icon">
+          🛒 <span id="nav-cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  
+<section class="product-grid">
+  <div class="product-card">
+    <img src="pics/oud.png" alt="1 Million Oud">
+    <h3>
+  1 مليون<br>
+  <span class="subtitle">(Inspired by 1 Million)</span>
+</h3>
+    <select id="size-select-1million" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="1 Million - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Amber Gold Oud">
+    <h3>
+  العنبر الذهب<br>
+  <span class="subtitle">(Inspired by Amber Gold)</span>
+</h3>
+    <select id="size-select-ambergold" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Amber Gold - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Angel Share Oud">
+    <h3>
+  مشاركة الملاك<br>
+  <span class="subtitle">(Inspired by Angel Share)</span>
+</h3>
+    <select id="size-select-angelshare" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Angel Share - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Baccarat Rouge Oud">
+    <h3>
+  باكارا روج<br>
+  <span class="subtitle">(Inspired by Baccarat Rouge)</span>
+</h3>
+    <select id="size-select-baccarat" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Baccarat Rouge - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Bleu De Chanel Oud">
+    <h3>
+  بلو دي شانيل<br>
+  <span class="subtitle">(Inspired by Bleu De Chanel)</span>
+</h3>
+    <select id="size-select-bleu" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Bleu De Chanel - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Creed Aventus Oud">
+    <h3>
+  كريد أفينتوس<br>
+  <span class="subtitle">(Inspired by Creed Aventus)</span>
+</h3>
+    <select id="size-select-creed" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Creed Aventus - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Golden Dust Oud">
+    <h3>
+  الغبار الذهبي<br>
+  <span class="subtitle">(Inspired by Golden Dust)</span>
+</h3>
+    <select id="size-select-golden" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Golden Dust - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Imperial Valley Oud">
+    <h3>
+  الوادي الإمبراطوري<br>
+  <span class="subtitle">(Inspired by Imperial Valley)</span>
+</h3>
+    <select id="size-select-imperial" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Imperial Valley - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Lost Cherry Oud">
+    <h3>
+  الكرز المفقود<br>
+  <span class="subtitle">(Inspired by Lost Cherry)</span>
+</h3>
+    <select id="size-select-lostcherry" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Lost Cherry - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Ombre Nomade Oud">
+    <h3>
+  أومبير نومادي<br>
+  <span class="subtitle">(Inspired by Ombre Nomade)</span>
+</h3>
+    <select id="size-select-ombre" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Ombre Nomade - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Sauvage Oud">
+    <h3>
+  سوفاج<br>
+  <span class="subtitle">(Inspired by Sauvage)</span>
+</h3>
+    <select id="size-select-sauvage" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Sauvage - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+  <div class="product-card">
+    <img src="pics/oud.png" alt="Second Wife Oud">
+    <h3>
+  الزوجة الثانية<br>
+  <span class="subtitle">(Inspired by Second Wife)</span>
+</h3>
+    <select id="size-select-secondwife" class="size-select">
+      <option value="" selected>Select size</option>
+      <option value="3ml" data-price="5">3ml - £5</option>
+      <option value="6ml" data-price="8">6ml - £8</option>
+      <option value="12ml" data-price="15">12ml - £15</option>
+    </select>
+    <p class="price">From £5</p>
+    <button class="add-to-cart" data-name="Second Wife - 6ml" data-price="8" data-image="pics/oud.png" disabled>Add to Cart</button>
+  </div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Oud For Greatness">
+  <h3>
+    عود للعظمة<br>
+    <span class="subtitle">(Inspired by Oud For Greatness)</span>
+  </h3>
+  <select id="size-select-ofg" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Oud For Greatness - 3ml" data-price="5" data-image="pics/Oud-For-Greatness.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Arabians Tonka Oud">
+  <h3>
+    العرب تونكا<br>
+    <span class="subtitle">(Inspired by Arabians Tonka)</span>
+  </h3>
+  <select id="size-select-tonka" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Arabians Tonka - 3ml" data-price="5" data-image="pics/Arabians-Tonka.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Kalimat Oud">
+  <h3>
+   كلمات<br>
+    <span class="subtitle">(Inspired by Kalimat)</span>
+  </h3>
+  <select id="size-select-kalimat" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Kalimat - 3ml" data-price="5" data-image="pics/Kalimat.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Alien Oud">
+  <h3>
+    كائن فضائي<br>
+    <span class="subtitle">(Inspired by Alien)</span>
+  </h3>
+  <select id="size-select-alien" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Alien - 3ml" data-price="5" data-image="pics/Alien.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Coco Mademoiselle Oud">
+  <h3>
+    كوكو مادموزيل<br>
+    <span class="subtitle">(Inspired by Coco Mademoiselle)</span>
+  </h3>
+  <select id="size-select-coco" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Coco Mademoiselle - 3ml" data-price="5" data-image="pics/Coco-Mademoiselle.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Jadore Oud">
+  <h3>
+    جادور<br>
+    <span class="subtitle">(Inspired by Jadore)</span>
+  </h3>
+  <select id="size-select-jadore" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Jadore - 3ml" data-price="5" data-image="pics/Jadore.png" disabled>
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="pics/oud.png" alt="Chanel No.5 Oud">
+  <h3>
+      شانيل رقم 5<br>
+    <span class="subtitle">(Inspired by Chanel No.5)</span>
+  </h3>
+  <select id="size-select-chanel" class="size-select">
+    <option value="" selected>Select size</option>
+    <option value="3ml" data-price="5">3ml - £5</option>
+    <option value="6ml" data-price="8">6ml - £8</option>
+    <option value="12ml" data-price="15">12ml - £15</option>
+  </select>
+  <p class="price">From £5</p>
+  <button class="add-to-cart" data-name="Chanel No.5 - 3ml" data-price="5" data-image="pics/Chanel-No5.png" disabled>
+    Add to Cart
+  </button>
+</div>
+</section>
+
+
+  <button class="carousel-btn next">❯</button>
+</section>
+
+<!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>

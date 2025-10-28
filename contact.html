@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ad-Din Collections - Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Ad-Din Collections</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://js.stripe.com/v3/"></script>
+  
 </head>
 <body>
 
@@ -56,31 +56,33 @@
     </nav>
   </header>
 
-  <!-- Cart Section -->
-  <main style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
-    <h1 style="text-align:center; color: #e2b111;">Your Cart 🛒</h1>
-    <ul class="cart-items" id="cart-items" style="margin-top: 2rem;"></ul>
-    <p id="cart-total" style="text-align: center; font-weight: bold; color: #e2b111; font-size: 1.3rem; margin-top: 1rem;">
-      Total: £0.00
-    </p>
-    <div style="text-align: center; margin-top: 1.5rem;">
-      <button class="btn checkout-btn" style="background-color:#e2b111; color:#000; font-weight: bold; padding: 10px 30px; border-radius: 30px; cursor: pointer;">
-        Checkout
-      </button>
-    </div>
+  <main>
+    <header>
+      <h1>Contact Us</h1>
+    </header>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" required />
+      
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your message here..." required></textarea>
+      
+      <button type="submit">Send</button>
+    </form>
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-links">
+  <footer class="site-footer" style="margin-top: 3rem; text-align:center; color:#e2b111;">
+    <div class="footer-links" style="margin-bottom: 1rem;">
       <a href="about.html">About</a> |
       <a href="contact.html">Contact</a> |
       <a href="Size-Guides.html">Size Guide</a>
     </div>
     <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
   </footer>
-
-  <script src="script.js"></script>
 
 </body>
 </html>

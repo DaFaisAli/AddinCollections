@@ -1,14 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ad-Din Collections - Cart</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://js.stripe.com/v3/"></script>
-</head>
 <body>
-
   <!-- Top Banner -->
   <div class="top-banner">
     Free Delivery with orders over £40
@@ -56,19 +46,59 @@
     </nav>
   </header>
 
-  <!-- Cart Section -->
-  <main style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
-    <h1 style="text-align:center; color: #e2b111;">Your Cart 🛒</h1>
-    <ul class="cart-items" id="cart-items" style="margin-top: 2rem;"></ul>
-    <p id="cart-total" style="text-align: center; font-weight: bold; color: #e2b111; font-size: 1.3rem; margin-top: 1rem;">
-      Total: £0.00
-    </p>
-    <div style="text-align: center; margin-top: 1.5rem;">
-      <button class="btn checkout-btn" style="background-color:#e2b111; color:#000; font-weight: bold; padding: 10px 30px; border-radius: 30px; cursor: pointer;">
-        Checkout
-      </button>
-    </div>
-  </main>
+  <!-- Page Header -->
+  <header>
+    <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+  </header>
+
+  <section class="size-guide">
+
+  <!-- Saudi Thobe Sizing Table -->
+  <h2>Saudi Thobes</h2>
+  <table class="size-guide-table" border="1" cellspacing="0" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Size</th>
+        <th>Length</th>
+        <th>Chest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>52</td><td>128 cm</td><td>57 cm</td></tr>
+      <tr><td>54</td><td>133 cm</td><td>58 cm</td></tr>
+      <tr><td>56</td><td>135 cm</td><td>57 cm</td></tr>
+      <tr><td>58</td><td>139 cm</td><td>60 cm</td></tr>
+      <tr><td>60</td><td>144 cm</td><td>63 cm</td></tr>
+      <tr><td>62</td><td>150 cm</td><td>64.5 cm</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Moroccan Thobes Table -->
+  <h2>Moroccan Thobes</h2>
+  <table class="size-guide-table" border="1" cellspacing="0" cellpadding="6">
+    <thead>
+      <tr>
+        <th>Size</th>
+        <th>Chest</th>
+        <th>Length</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>36 / 52</td><td>66 cm</td><td>128 - 131 cm</td></tr>
+      <tr><td>38 / 54</td><td>69 cm</td><td>132 - 134 cm</td></tr>
+      <tr><td>40 / 56</td><td>71 cm</td><td>135 - 139 cm</td></tr>
+      <tr><td>42 / 58</td><td>74 cm</td><td>140 - 145 cm</td></tr>
+    </tbody>
+  </table>
+
+  <p class="size-disclaimer">
+  *Disclaimer: All measurements are estimates and may vary slightly by individual garment.
+</p>
+
+</section>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -79,8 +109,4 @@
     </div>
     <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
   </footer>
-
-  <script src="script.js"></script>
-
 </body>
-</html>

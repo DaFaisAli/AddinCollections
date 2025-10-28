@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ad-Din Collections - Cart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Keffiyehs | Ad-Din Collections</title>
   <link rel="stylesheet" href="style.css" />
-  <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
@@ -56,19 +55,52 @@
     </nav>
   </header>
 
-  <!-- Cart Section -->
-  <main style="max-width: 900px; margin: 2rem auto; padding: 0 1rem;">
-    <h1 style="text-align:center; color: #e2b111;">Your Cart 🛒</h1>
-    <ul class="cart-items" id="cart-items" style="margin-top: 2rem;"></ul>
-    <p id="cart-total" style="text-align: center; font-weight: bold; color: #e2b111; font-size: 1.3rem; margin-top: 1rem;">
-      Total: £0.00
-    </p>
-    <div style="text-align: center; margin-top: 1.5rem;">
-      <button class="btn checkout-btn" style="background-color:#e2b111; color:#000; font-weight: bold; padding: 10px 30px; border-radius: 30px; cursor: pointer;">
-        Checkout
-      </button>
+  <!-- Keffiyehs Section -->
+  <section class="products">
+    <h2>Keffiyehs</h2>
+    <div class="product-grid">
+
+      <!-- Product Card 1 -->
+      <div class="product-card">
+        <img src="pics/Red & White Keffiyeh.jpeg" alt="Red and White Keffiyeh" />
+        <h3>Red & White Keffiyeh</h3>
+        <p>£10</p>
+        <button class="add-to-cart"
+                data-name="Red & White Keffiyeh"
+                data-price="10"
+                data-image="pics/Red & White Keffiyeh.jpeg">
+          Add to Cart
+        </button>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <img src="pics/Black & White Keffiyeh.jpeg" alt="Black and White Keffiyeh" />
+        <h3>Black & White (Palestinian) Keffiyeh</h3>
+        <p>£10</p>
+        <button class="add-to-cart"
+                data-name="Black & White (Palestinian) Keffiyeh"
+                data-price="10"
+                data-image="pics/Black & White Keffiyeh.jpeg">
+          Add to Cart
+        </button>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="product-card">
+        <img src="pics/White Keffiyeh.jpeg" alt="White Keffiyeh" />
+        <h3>White Keffiyeh</h3>
+        <p>£10</p>
+        <button class="add-to-cart"
+                data-name="White Keffiyeh"
+                data-price="10"
+                data-image="pics/White Keffiyeh.jpeg">
+          Add to Cart
+        </button>
+      </div>
+
     </div>
-  </main>
+  </section>
 
   <!-- Footer -->
   <footer class="site-footer">
@@ -81,6 +113,5 @@
   </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>

@@ -7,73 +7,330 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="logo">Ad-Din Collections</div>
 
-  <!-- Hamburger menu button -->
-  <button class="hamburger" id="hamburger">
-    ☰
-  </button>
-
- <!-- Nav links -->
-<ul class="nav-links" id="nav-links">
-    <li><a href="#shop">Shop</a></li>
-    <li><a href="perfumes.html">Perfumes</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-    <li><a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a></li>
-  </ul>
-</nav>
-
-<!-- Header -->
-<header class="hero">
-  <div class="hero-content">
-    <h1>Welcome to Ad-Din Collections</h1>
-    <p>Elegant Arabic Outfits for Every Occasion</p>
-    <a href="#shop" class="btn">Shop Now</a>
+  <!-- Top Banner -->
+  <div class="top-banner">
+    Free Delivery with orders over £40
   </div>
-</header>
 
-<!-- Products -->
-<section id="shop" class="products">
-  <h2>Our Collection</h2>
-  <div class="product-grid">
-    <div class="product-card">
-      <img src="https://via.placeholder.com/250" alt="Outfit 1">
-      <h3>Classic Thobe</h3>
-      <p>£49.99</p>
-      <button>Add to Cart</button>
+  <!-- Header / Navbar -->
+  <header class="navbar">
+    <!-- Logo centered -->
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
     </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/250" alt="Outfit 2">
-      <h3>Embroidered Abaya</h3>
-      <p>£69.99</p>
-      <button>Add to Cart</button>
+
+    <!-- Navigation links and right icons -->
+    <div class="nav-container">
+      <nav class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </nav>
+
+      <div class="right-icons">
+        <div class="search-container">
+          <button id="search-toggle" class="search-icon">🔍</button>
+          <form id="search-form" class="search-bar hidden">
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button type="submit">🔍</button>
+          </form>
+        </div>
+        <a href="cart.html" id="cart-icon">🛒 <span id="nav-cart-count">0</span></a>
+      </div>
     </div>
-    <div class="product-card">
-      <img src="https://via.placeholder.com/250" alt="Outfit 3">
-      <h3>Jalabiya Luxe</h3>
-      <p>£59.99</p>
-      <button>Add to Cart</button>
+  </header>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>The Faith in Every Scent, The Tradition in Every Thread</h1>
+      <button class="btn">Shop Now</button>
     </div>
+  </section>
+
+  <!-- Products -->
+  <section id="shop" class="products">
+    <h2>Bestsellers</h2>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <img src="pics/Black & Gold Moroccan Thobe.jpeg" alt="Black & Gold Moroccan Thobe" />
+        <h3>Black & Gold Moroccan Thobe</h3>
+        <select class="size-select">
+          <option value="">Select size</option>
+          <option value="36">36</option>
+          <option value="38">38</option>
+          <option value="40">40</option>
+          <option value="42">42</option>
+        </select>
+
+        <p class="price">£25</p>
+
+        <button class="add-to-cart"
+                data-name="Black & Gold Moroccan Thobe"
+                data-price="25"
+                data-image="pics/Black & Gold Moroccan Thobe.jpeg">
+          Add to Cart
+        </button>
+      </div>
+
+      <div class="product-card">
+    <img src="pics/Lost-Cherry-pic.png" alt="Lost Cherry Perfume" />
+    <h3>
+  الكرز المفقود<br>
+  <span class="subtitle">(Inspired by Lost Cherry)</span>
+</h3>
+
+    <select id="size-select-lost" class="size-select">
+      <option value="">Select size</option>
+      <option value="30ml" data-price="25">30ml - £25</option>
+      <option value="50ml" data-price="40">50ml - £40</option>
+    </select>
+
+    <p class="price">From £25</p>
+
+    <button
+      class="add-to-cart"
+      data-name="Lost Cherry Perfume"
+      data-price="25"
+      data-image="pics/Lost-Cherry-pic.png"
+      disabled
+    >
+      Add to Cart
+    </button>
   </div>
-</section>
 
-<!-- Cart Section -->
-<section id="cart" class="cart">
-  <h2>Your Cart 🛒</h2>
-  <p>Items in cart: <span id="cart-count">0</span></p>
-  <ul id="cart-items"></ul>
-  <p id="cart-total">Total: £0.00</p>
-  <a href="#" class="btn">Go to Checkout</a>
-</section>
+  <div class="product-card">
+    <img src="pics/Second-Wife-pic.png" alt="Second Wife Perfume" />
+    <h3>
+  الزوجة الثانية<br>
+  <span class="subtitle">(Inspired by Second Wife)</span>
+</h3>
+
+    <select id="size-select-second" class="size-select">
+      <option value="">Select size</option>
+      <option value="30ml" data-price="25">30ml - £25</option>
+      <option value="50ml" data-price="40">50ml - £40</option>
+    </select>
+
+    <p class="price">From £25</p>
+
+    <button
+      class="add-to-cart"
+      data-name="Second Wife Perfume"
+      data-price="25"
+      data-image="pics/Second-Wife-pic.png"
+      disabled
+    >
+      Add to Cart
+    </button>
+  </div>
+
+    </div>
+  </section>
+
+  <!-- Cart Section -->
+  <section id="cart" class="cart">
+    <h2>Your Cart 🛒</h2>
+    <p>Items in cart: <span id="cart-count">0</span></p>
+    <ul id="cart-items" class="cart-items"></ul>
+    <p id="cart-total">Total: £0.00</p>
+    <a href="checkout.html" class="btn checkout-btn">Go to Checkout</a>
+  </section>
 
   <!-- Footer -->
-  <footer>
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
     <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
   </footer>
 
-<script src="script.js"></script>  
+  <!-- 🧠 Cart Script -->
+  <script>
+  console.log("Script loaded!");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  document.addEventListener("DOMContentLoaded", function () {
+    initializeCart();
+    updateCartCount();
+    updateNavCartCount();
+
+    const checkoutBtn = document.querySelector(".checkout-btn");
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener("click", function () {
+        if (cart.length === 0) {
+          alert("🛒 Your cart is empty!");
+        } else {
+          alert("✅ Checkout successful!");
+          cart = [];
+          saveCart();
+        }
+      });
+    }
+
+    // Enable Add to Cart buttons only if size selected & update price dynamically
+    document.querySelectorAll('.product-card').forEach(card => {
+      const sizeSelect = card.querySelector('.size-select');
+      const addButton = card.querySelector('.add-to-cart');
+
+      if (!sizeSelect || !addButton) return;
+
+      function updateButtonState() {
+        if (sizeSelect.value) {
+          addButton.disabled = false;
+
+          // Update price on the button based on selected option's data-price (if available)
+          const selectedOption = sizeSelect.options[sizeSelect.selectedIndex];
+          if (selectedOption.dataset.price) {
+            addButton.setAttribute('data-price', selectedOption.dataset.price);
+          }
+        } else {
+          addButton.disabled = true;
+        }
+      }
+
+      sizeSelect.addEventListener('change', updateButtonState);
+
+      // Initialize button state on page load
+      updateButtonState();
+    });
+
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach((btn) => {
+      btn.addEventListener("click", (event) => {
+        event.preventDefault();
+        const card = btn.closest('.product-card');
+        const sizeSelect = card.querySelector('.size-select');
+        const size = sizeSelect ? sizeSelect.value : '';
+
+        if (sizeSelect && !size) {
+          alert("Please select a size before adding to cart.");
+          return;
+        }
+
+        const name = btn.getAttribute("data-name");
+        const price = parseFloat(btn.getAttribute("data-price"));
+        const image = btn.getAttribute("data-image");
+        addToCart(name, price, image, size);
+      });
+    });
+
+    setupRemoveButtons();
+  });
+
+  // Add size parameter to cart item
+  function addToCart(name, price, image, size = '') {
+    // Use name + size to differentiate items
+    const existingItem = cart.find(item => item.name === name && item.size === size);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      cart.push({ name, price, quantity: 1, image, size });
+    }
+    saveCart();
+  }
+
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    saveCart();
+  }
+
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    displayCart();
+    updateCartCount();
+    updateNavCartCount();
+  }
+
+  function displayCart() {
+    const cartItems = document.getElementById("cart-items");
+    const cartTotal = document.getElementById("cart-total");
+    if (!cartItems || !cartTotal) return;
+
+    cartItems.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = "<li>Your cart is empty 🛍️</li>";
+      cartTotal.textContent = "Total: £0.00";
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      const price = parseFloat(item.price);
+      const quantity = parseInt(item.quantity);
+      total += price * quantity;
+
+      const sizeText = item.size ? ` (Size: ${item.size})` : '';
+
+      const li = document.createElement("li");
+      li.innerHTML = `
+        <div class="cart-item-info">
+          <img src="${item.image}" alt="${item.name}" class="cart-item-img" />
+          <span class="cart-item-name">${item.name}${sizeText}</span>
+        </div>
+        <span class="cart-item-price">£${(price * quantity).toFixed(2)}</span>
+        <button class="remove-btn" onclick="removeFromCart(${index})">Remove</button>
+      `;
+      cartItems.appendChild(li);
+    });
+
+    cartTotal.textContent = `Total: £${total.toFixed(2)}`;
+  }
+
+  function updateCartCount() {
+    const cartCount = document.getElementById("cart-count");
+    if (cartCount) {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+    }
+  }
+
+  function updateNavCartCount() {
+    const navCartCount = document.getElementById("nav-cart-count");
+    if (navCartCount) {
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      navCartCount.textContent = totalItems;
+    }
+  }
+
+  function initializeCart() {
+    displayCart();
+  }
+
+  function setupRemoveButtons() {
+    const cartList = document.getElementById("cart-items");
+    if (!cartList) return;
+
+    cartList.addEventListener("click", (event) => {
+      if (event.target.classList.contains("remove-btn")) {
+        const index = Array.from(cartList.children).indexOf(event.target.closest("li"));
+        removeFromCart(index);
+      }
+    });
+  }
+</script>
+
 </body>
 </html>

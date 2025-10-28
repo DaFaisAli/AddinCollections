@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bundles | Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    Free Delivery with orders over £40
+  </div>
+
+  <!-- Header with Logo -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="nav-container">
+      <div class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </div>
+
+      <!-- Right icons: search + cart -->
+      <div class="right-icons">
+        <div class="search-container">
+          <button id="search-toggle" class="search-icon">🔍</button>
+          <form id="search-form" class="search-bar hidden">
+            <input type="text" id="search-input" placeholder="Search products..." />
+            <button type="submit">🔍</button>
+          </form>
+        </div>
+        <a href="cart.html" id="cart-icon">
+          🛒 <span id="nav-cart-count">0</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+  
+  <!-- Oud Bundles Section -->
+<section class="products">
+  <h2>Oud Bundles</h2>
+  <div class="product-grid">
+    <!-- Product Card 1 -->
+    <div class="product-card">
+      <img src="pics/oud.png" alt="3x 3ml Oud Bundle" />
+      <h3>3x 3ml Oud Bundle</h3>
+      <p class="price">£12.50</p>
+      <button class="toggle-options">Choose Scents</button>
+      <div class="giftset-options" style="display: none;">
+        <div class="gift-dropdowns"></div>
+        <button class="add-giftset-to-cart"
+                data-name="3x 3ml Oud Bundle"
+                data-price="12.50"
+                data-image="pics/oud.png">
+          Add Giftset to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card 2 -->
+    <div class="product-card">
+      <img src="pics/oud.png" alt="3x 6ml Oud Bundle" />
+      <h3>3x 6ml Oud Bundle</h3>
+      <p class="price">£20</p>
+      <button class="toggle-options">Choose Scents</button>
+      <div class="giftset-options" style="display: none;">
+        <div class="gift-dropdowns"></div>
+        <button class="add-giftset-to-cart"
+                data-name="3x 6ml Oud Bundle"
+                data-price="20"
+                data-image="pics/oud.png">
+          Add Giftset to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card 3 -->
+    <div class="product-card">
+      <img src="pics/oud.png" alt="3x 12ml Oud Bundle" />
+      <h3>3x 12ml Oud Bundle</h3>
+      <p class="price">£40</p>
+      <button class="toggle-options">Choose Scents</button>
+      <div class="giftset-options" style="display: none;">
+        <div class="gift-dropdowns"></div>
+        <button class="add-giftset-to-cart"
+                data-name="3x 12ml Oud Bundle"
+                data-price="40"
+                data-image="pics/oud.png">
+          Add Giftset to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Perfume Bundles Section -->
+<section class="products">
+  <h2>Perfume Bundles</h2>
+  <div class="product-grid">
+    <!-- Product Card 4 -->
+    <div class="product-card">
+      <img src="pics/3x-30ml-Perfume-Photoroom.png" alt="3x 30ml Perfume Bundle" />
+      <h3>3x 30ml Perfume Bundle</h3>
+      <p class="price">£65</p>
+      <button class="toggle-options">Choose Scents</button>
+      <div class="giftset-options" style="display: none;">
+        <div class="gift-dropdowns"></div>
+        <button class="add-giftset-to-cart"
+                data-name="3x 30ml Perfume Bundle"
+                data-price="65"
+                data-image="pics/3x-30ml-Perfume-Photoroom.png">
+          Add Giftset to Cart
+        </button>
+      </div>
+    </div>
+
+    <!-- Product Card 5 -->
+    <div class="product-card">
+      <img src="pics/3x-30ml-Perfume-Photoroom.png" alt="3x 50ml Perfume Bundle" />
+      <h3>3x 50ml Perfume Bundle</h3>
+      <p class="price">£100</p>
+      <button class="toggle-options">Choose Scents</button>
+      <div class="giftset-options" style="display: none;">
+        <div class="gift-dropdowns"></div>
+        <button class="add-giftset-to-cart"
+                data-name="3x 50ml Perfume Bundle"
+                data-price="100"
+                data-image="pics/3x-30ml-Perfume-Photoroom.png">
+          Add Giftset to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Thobe Bundles Section -->
+<section class="products">
+  <h2>Attire Bundles</h2>
+  <div class="product-grid">
+    <!-- Product Card 6: Thobe + Keffiyeh Bundle -->
+    <div class="product-card bundle-card">
+      <img src="pics/Black & Gold Moroccan Thobe.jpeg" 
+           alt="Moroccan & Saudi Thobe & Keffiyeh Bundle" 
+           class="product-image" />
+      <h3 class="product-title">Moroccan + Saudi Thobe + Keffiyeh Bundle</h3>
+      <p class="price">£45</p>
+
+      <div class="bundle-row">
+        <div class="bundle-item">
+          <label for="moroccan-size">Moroccan Thobe Size:</label>
+          <select id="moroccan-size" class="bundle-size" data-item="Moroccan Thobe">
+            <option value="">Select size</option>
+            <option value="36">36</option>
+            <option value="38">38</option>
+            <option value="40">40</option>
+            <option value="42">42</option>
+          </select>
+        </div>
+        <div class="bundle-item">
+          <label for="moroccan-color">Moroccan Thobe Colour:</label>
+          <select id="moroccan-color" class="bundle-color" data-item="Moroccan Thobe">
+            <option value="">Select colour</option>
+            <option value="White">White</option>
+            <option value="Beige">Beige</option>
+            <option value="Navy">Navy</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="bundle-row">
+        <div class="bundle-item">
+          <label for="saudi-size">Saudi Thobe Size:</label>
+          <select id="saudi-size" class="bundle-size" data-item="Saudi Thobe">
+            <option value="">Select size</option>
+            <option value="52">52</option>
+            <option value="54">54</option>
+            <option value="56">56</option>
+            <option value="58">58</option>
+            <option value="60">60</option>
+            <option value="62">62</option>
+          </select>
+        </div>
+        <div class="bundle-item">
+          <label for="keffiyeh-color">Keffiyeh Colour:</label>
+          <select id="keffiyeh-color" class="bundle-color" data-item="Keffiyeh">
+            <option value="">Select colour</option>
+            <option value="Black/White">Black/White</option>
+            <option value="Red/White">Red/White</option>
+            <option value="Brown/White">Brown/White</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="add-bundle-to-cart"
+              data-name="Moroccan & Saudi Thobe & Keffiyeh Bundle"
+              data-price="45"
+              data-image="pics/bundle-thobe-keffiyeh.jpeg">
+        Add Bundle to Cart
+      </button>
+    </div>
+  </div>
+</section>
+
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
