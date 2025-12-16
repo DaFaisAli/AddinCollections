@@ -246,39 +246,32 @@ function setupCheckoutButton() {
       return;
     }
 
-    for (let item of cart) {
-      if (item.quantity > item.stock) {
-        alert(`❗ Not enough stock for ${item.name}.`);
+    try {
+      const response = await fetch("http://localhost:4242/create-checkout-session", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: cart.map(item => ({
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+          }))
+        })
+      });
+
+      const data = await response.json();
+
+      if (!data.url) {
+        alert("Checkout failed. Please try again.");
         return;
       }
+
+      window.location.href = data.url;
+
+    } catch (err) {
+      console.error(err);
+      alert("Unable to connect to payment server.");
     }
-
-    alert("✅ Checkout successful!");
-
-// 🔥 REDUCE STOCK
-cart.forEach(item => {
-  let size = "default";
-
-  if (item.options) {
-    const sizeOpt = item.options.find(o => o.startsWith("Size:"));
-    if (sizeOpt) size = sizeOpt.replace("Size:", "").trim();
-  }
-
-  const product = products.find(p => item.name.startsWith(p.name));
-  if (!product) return;
-
-  if (!product.stockObj[size]) product.stockObj[size] = 0;
-  product.stockObj[size] -= item.quantity;
-
-  if (product.stockObj[size] < 0) product.stockObj[size] = 0;
-});
-
-// 💾 Save updated stock
-localStorage.setItem("products", JSON.stringify(products));
-
-// 🧹 Clear cart
-cart = [];
-saveCart();
   });
 }
 
