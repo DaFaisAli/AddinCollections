@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Orders – Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="top-banner">Free Delivery with orders over £40</div>
+
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
+    </div>
+
+    <div class="nav-container">
+      <nav class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <div class="dropdown">
+          <span class="dropbtn">Accessories ▾</span>
+          <div class="dropdown-content">
+            <a href="car-diffuser.html">Car Diffuser</a>
+          </div>
+        </div>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </nav>
+
+      <div class="right-icons">
+        <a href="cart.html">🛒 <span id="nav-cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <section class="form-section">
+    <h2>Your Orders</h2>
+    <div id="ordersContainer" class="orders-box">Loading...</div>
+
+    <button onclick="logout()" class="btn-gold" style="margin-top:20px;">Logout</button>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+<script>
+async function loadOrders() {
+  const token = localStorage.getItem("token");
+  if (!token) return window.location.href = "login.html";
+
+  const response = await fetch("http://localhost:5000/api/orders", {
+    headers: { "Authorization": token }
+  });
+
+  const data = await response.json();
+
+  const container = document.getElementById("ordersContainer");
+  container.innerHTML = "";
+
+  if (data.length === 0) {
+    container.innerHTML = "<p>You have no orders yet.</p>";
+    return;
+  }
+
+  data.forEach(order => {
+    container.innerHTML += `
+      <div class="order-item">
+        <p><strong>Product:</strong> ${order.product}</p>
+        <p><strong>Status:</strong> ${order.status}</p>
+        <p><strong>Date:</strong> ${new Date(order.createdAt).toLocaleString()}</p>
+        <hr>
+      </div>
+    `;
+  });
+}
+
+function logout() {
+  localStorage.removeItem("token");
+  window.location.href = "login.html";
+}
+
+loadOrders();
+</script>
+
+</body>
+</html>

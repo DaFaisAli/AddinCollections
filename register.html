@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register – Ad-Din Collections</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="top-banner">Free Delivery with orders over £40</div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="logo">
+      <a href="index.html">
+        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+      </a>
+    </div>
+
+    <div class="nav-container">
+      <nav class="nav-links">
+        <a href="Fragrances.html">Fragrances</a>
+        <a href="Oud.html">Oud</a>
+        <div class="dropdown">
+          <span class="dropbtn">Thobes ▾</span>
+          <div class="dropdown-content">
+            <a href="moroccan-thobes.html">Moroccan Thobes</a>
+            <a href="saudi-thobes.html">Saudi Thobes</a>
+          </div>
+        </div>
+        <a href="Candles.html">Candles</a>
+        <a href="Keffiyehs.html">Keffiyehs</a>
+        <div class="dropdown">
+          <span class="dropbtn">Accessories ▾</span>
+          <div class="dropdown-content">
+            <a href="car-diffuser.html">Car Diffuser</a>
+          </div>
+        </div>
+        <a href="Giftsets.html">Giftsets</a>
+        <a href="Bundles.html">Bundles</a>
+      </nav>
+
+      <div class="right-icons">
+        <a href="cart.html" id="cart-icon">🛒 <span id="nav-cart-count">0</span></a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Register Form Section -->
+  <section class="form-section">
+    <h2>Create an Account</h2>
+
+    <form id="registerForm">
+      <label>Email</label>
+      <input type="email" id="email" required />
+
+      <label>Password</label>
+      <input type="password" id="password" required />
+
+      <button type="submit" class="btn-gold">Register</button>
+
+      <p class="form-link">
+        Already have an account? <a href="login.html">Login</a>
+      </p>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="Size-Guides.html">Size Guide</a>
+    </div>
+    <p>&copy; 2025 Ad-Din Collections. All rights reserved.</p>
+  </footer>
+
+<script>
+document.getElementById("registerForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch("http://localhost:5000/api/auth/register", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const data = await response.json();
+
+  if (response.ok) {
+    alert("Account created successfully!");
+    window.location.href = "login.html";
+  } else {
+    alert(data.message || "Registration failed");
+  }
+});
+</script>
+
+</body>
+</html>

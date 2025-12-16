@@ -4,6 +4,29 @@ console.log("Script loaded!");
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 let selectedSizes = JSON.parse(localStorage.getItem("selectedSizes")) || {};
 
+const stockData = JSON.parse(localStorage.getItem("stockData")) || {};
+
+// Initialize stockData if empty
+if (Object.keys(stockData).length === 0) {
+  const stockInit = {};
+  products.forEach(product => {
+    if (product.sizes && Array.isArray(product.sizes)) {
+      product.sizes.forEach(s => {
+        const key = `${product.name}-${s.size}`;
+        stockInit[key] = 0; // default stock
+      });
+    } else {
+      stockInit[product.name] = product.price ? 0 : 0;
+    }
+  });
+  localStorage.setItem("stockData", JSON.stringify(stockInit));
+}
+
+function getStock(productName, size = "default") {
+  const key = size === "default" ? productName : `${productName}-${size}`;
+  return stockData[key] ?? 0;
+}
+
 // ==================== DOMCONTENTLOADED ====================
 document.addEventListener("DOMContentLoaded", () => {
   initializeCart();
@@ -14,24 +37,48 @@ document.addEventListener("DOMContentLoaded", () => {
   setupRemoveButtons();
   setupProductCards();
   setupGiftsets();
-  setupBundleOptions(); // ✅ NEW: bundle size & colour
-  setupTitleLineBreaks(); // ✅ Applies auto line breaks for clothing only
+  setupBundleOptions();
+  setupTitleLineBreaks();
+  setupSearchToggle();
+  setupAccountDropdown();
+
+  refreshAddButtons();
 });
 
 // ==================== CART FUNCTIONS ====================
-function addToCart(name, price, image, options) {
-  const optionsKey = options ? JSON.stringify(options) : null;
+function addToCart(name, price, image, options = [], stockObj = { default: 9999 }) {
+  let selectedSize = "default";
+  options.forEach(opt => {
+    if (opt.includes("Size:")) selectedSize = opt.split("Size:")[1].trim();
+  });
+
+  const availableStock = getStock(name.replace(` - ${selectedSize}`, ""), selectedSize);
+
+  const optionsKey = JSON.stringify(options);
   const existingItem = cart.find(item =>
     item.name === name && JSON.stringify(item.options) === optionsKey
   );
 
   if (existingItem) {
-    existingItem.quantity += 1;
+    if (existingItem.quantity + 1 > availableStock) {
+      alert(`❗ Not enough stock for ${name} (${selectedSize})`);
+      return;
+    }
+    existingItem.quantity++;
   } else {
-    cart.push({ name, price, quantity: 1, image, options });
+    cart.push({
+      name,
+      price,
+      quantity: 1,
+      image,
+      options,
+      stockObj,
+      stock: availableStock
+    });
   }
 
   saveCart();
+  refreshAddButtons();
 }
 
 function removeFromCart(index) {
@@ -81,16 +128,56 @@ function displayCart() {
     nameSpan.textContent = `${item.name}${quantity > 1 ? ` x${quantity}` : ""}`;
     textDiv.appendChild(nameSpan);
 
+    const qtyContainer = document.createElement("div");
+    qtyContainer.classList.add("cart-qty-container");
+
+    const minusBtn = document.createElement("button");
+    minusBtn.textContent = "−";
+    minusBtn.classList.add("qty-btn");
+    minusBtn.addEventListener("click", () => {
+      if (item.quantity > 1) {
+        item.quantity--;
+        saveCart();
+      }
+    });
+
+    const qtyInput = document.createElement("input");
+    qtyInput.type = "number";
+    qtyInput.min = 1;
+    qtyInput.max = item.stock;
+    qtyInput.value = item.quantity;
+    qtyInput.classList.add("qty-input");
+    qtyInput.addEventListener("change", () => {
+      let val = parseInt(qtyInput.value);
+      if (val > item.stock) val = item.stock;
+      if (val < 1) val = 1;
+      item.quantity = val;
+      saveCart();
+    });
+
+    const plusBtn = document.createElement("button");
+    plusBtn.textContent = "+";
+    plusBtn.classList.add("qty-btn");
+    plusBtn.addEventListener("click", () => {
+      if (item.quantity < item.stock) {
+        item.quantity++;
+        saveCart();
+      }
+    });
+
+    qtyContainer.appendChild(minusBtn);
+    qtyContainer.appendChild(qtyInput);
+    qtyContainer.appendChild(plusBtn);
+    textDiv.appendChild(qtyContainer);
+
     if (item.options && item.options.length) {
       const optionsContainer = document.createElement("div");
       optionsContainer.classList.add("cart-item-options");
-
       item.options.forEach(opt => {
         const optDiv = document.createElement("div");
         optDiv.textContent = opt;
         optionsContainer.appendChild(optDiv);
       });
-
       textDiv.appendChild(optionsContainer);
     }
 
@@ -159,9 +246,39 @@ function setupCheckoutButton() {
       return;
     }
 
+    for (let item of cart) {
+      if (item.quantity > item.stock) {
+        alert(`❗ Not enough stock for ${item.name}.`);
+        return;
+      }
+    }
+
     alert("✅ Checkout successful!");
-    cart = [];
-    saveCart();
+
+// 🔥 REDUCE STOCK
+cart.forEach(item => {
+  let size = "default";
+
+  if (item.options) {
+    const sizeOpt = item.options.find(o => o.startsWith("Size:"));
+    if (sizeOpt) size = sizeOpt.replace("Size:", "").trim();
+  }
+
+  const product = products.find(p => item.name.startsWith(p.name));
+  if (!product) return;
+
+  if (!product.stockObj[size]) product.stockObj[size] = 0;
+  product.stockObj[size] -= item.quantity;
+
+  if (product.stockObj[size] < 0) product.stockObj[size] = 0;
+});
+
+// 💾 Save updated stock
+localStorage.setItem("products", JSON.stringify(products));
+
+// 🧹 Clear cart
+cart = [];
+saveCart();
   });
 }
 
@@ -174,58 +291,103 @@ function setupProductCards() {
     const addBtn = card.querySelector(".add-to-cart");
     if (!addBtn) return;
 
+    const refreshSizes = () => {
+      const productName = card.querySelector("h3").textContent;
+      let stockObj = { default: 9999 };
+      const prod = products.find(p => productName.startsWith(p.name));
+      if (prod) stockObj = prod.stockObj;
+
+      if (select) {
+        let hasStock = false;
+        Array.from(select.options).forEach(opt => {
+          const size = opt.value;
+          const available = stockObj[size] || 0;
+          opt.disabled = available === 0;
+          if (available > 0) hasStock = true;
+        });
+
+        if (!select.value || stockObj[select.value] === 0) {
+          const firstAvailable = Array.from(select.options).find(opt => !opt.disabled);
+          select.value = firstAvailable ? firstAvailable.value : "";
+        }
+
+        addBtn.disabled = !hasStock || !select.value;
+      }
+    };
+
+    refreshSizes();
+
+    select?.addEventListener("change", () => {
+      const selectedSize = select.value;
+      const productName = card.querySelector("h3").textContent;
+
+      const currentPriceText = priceEl.textContent.replace(/[£,]/g, "").trim();
+      const currentPrice = parseFloat(currentPriceText) || 0;
+      const price = select.selectedOptions[0]?.dataset.price
+        ? parseFloat(select.selectedOptions[0].dataset.price)
+        : currentPrice;
+
+      priceEl.textContent = `£${price.toFixed(2)}`;
+      addBtn.dataset.price = price;
+      addBtn.dataset.name = `${productName} - ${selectedSize}`;
+      selectedSizes[productName] = selectedSize;
+      localStorage.setItem("selectedSizes", JSON.stringify(selectedSizes));
+
+      const prod = products.find(p => productName.startsWith(p.name));
+      const availableStock = prod?.stockObj[selectedSize] || 0;
+      addBtn.disabled = availableStock === 0;
+    });
+
     addBtn.addEventListener("click", (event) => {
       event.preventDefault();
       const name = addBtn.dataset.name || card.querySelector("h3").textContent;
       const price = parseFloat(addBtn.dataset.price) || 20;
       const image = addBtn.dataset.image || "";
-      addToCart(name, price, image);
+
+      let stockObj = { default: 9999 };
+      const prod = products.find(p => name.startsWith(p.name));
+      if (prod) stockObj = prod.stockObj;
+
+      const options = [];
+      if (select && select.value) options.push(`Size: ${select.value}`);
+
+      addToCart(name, price, image, options, stockObj);
     });
 
-    if (select) {
-      addBtn.disabled = true;
-
-      select.addEventListener("change", () => {
-        const selected = select.options[select.selectedIndex];
-        const size = selected.value;
-        const productName = card.querySelector("h3").textContent;
-
-        if (size) {
-          const currentPriceText = priceEl.textContent.replace(/[£,]/g, "").trim();
-          const currentPrice = parseFloat(currentPriceText) || 0;
-          const price = selected.dataset.price ? parseFloat(selected.dataset.price) : currentPrice;
-
-          priceEl.textContent = `£${price.toFixed(2)}`;
-          addBtn.disabled = false;
-          addBtn.dataset.price = price;
-          addBtn.dataset.name = `${productName} - ${size}`;
-          selectedSizes[productName] = size;
-          localStorage.setItem("selectedSizes", JSON.stringify(selectedSizes));
-        } else {
-          addBtn.disabled = true;
-          delete selectedSizes[productName];
-          localStorage.setItem("selectedSizes", JSON.stringify(selectedSizes));
-        }
-      });
-
-      const productName = card.querySelector("h3").textContent;
-      if (selectedSizes[productName]) {
-        select.value = selectedSizes[productName];
-        select.dispatchEvent(new Event("change"));
-      } else {
-        select.dispatchEvent(new Event("change"));
+    window.addEventListener("storage", (e) => {
+      if (e.key === "products") {
+        products = JSON.parse(e.newValue) || [];
+        refreshSizes();
+        refreshAddButtons();
+        updateCartStock();
       }
-    }
+    });
   });
 }
 
-// ==================== BUNDLE OPTIONS (SIZE + COLOUR) ====================
+// ==================== REFRESH ADD BUTTONS ====================
+function refreshAddButtons() {
+  document.querySelectorAll(".product-card").forEach(card => {
+    const addBtn = card.querySelector(".add-to-cart");
+    if (!addBtn) return;
+
+    const name = card.querySelector("h3").textContent.trim();
+    const select = card.querySelector(".size-select");
+    const size = select?.value || "default";
+    const stock = getStock(name, size);
+
+    addBtn.disabled = stock === 0;
+    addBtn.textContent = stock === 0 ? "Out of Stock" : "Add to Cart";
+    addBtn.style.opacity = stock === 0 ? 0.6 : 1;
+  });
+}
+
 // ==================== BUNDLE OPTIONS (SIZE + COLOUR) ====================
 function setupBundleOptions() {
   document.querySelectorAll(".add-bundle-to-cart").forEach(button => {
     button.addEventListener("click", () => {
       const card = button.closest(".product-card");
-      const selects = card.querySelectorAll(".bundle-size, .bundle-color"); // ✅ updated
+      const selects = card.querySelectorAll(".bundle-size, .bundle-color");
 
       const chosenOptions = [];
 
@@ -280,7 +442,6 @@ function setupGiftsets() {
   containers.forEach(container => {
     const card = container.closest(".product-card");
     const title = card.querySelector("h3").textContent.trim();
-
     const match = title.match(/(\d+)x/i);
     const itemCount = match ? parseInt(match[1]) : 3;
 
@@ -341,7 +502,7 @@ function setupGiftsets() {
     });
   });
 
-  console.log("Giftset script active ✅ (2x & 3x supported)");
+  console.log("Giftset script active ✅");
 }
 
 // ==================== SMART TITLE LINE BREAKS (CLOTHING ONLY) ====================
@@ -358,12 +519,34 @@ function setupTitleLineBreaks() {
 }
 
 // ==================== SEARCH BAR TOGGLE ====================
-const searchToggle = document.getElementById('search-toggle');
-const searchBar = document.getElementById('search-form');
+function setupSearchToggle() {
+  const searchToggle = document.getElementById('search-toggle');
+  const searchBar = document.getElementById('search-form');
 
-searchToggle.addEventListener('click', () => {
-  searchBar.classList.toggle('show');
-  if (searchBar.classList.contains('show')) {
-    document.getElementById('search-input').focus();
-  }
-});
+  if (!searchToggle || !searchBar) return;
+
+  searchToggle.addEventListener('click', () => {
+    searchBar.classList.toggle('show');
+    if (searchBar.classList.contains('show')) {
+      document.getElementById('search-input').focus();
+    }
+  });
+}
+
+// ==================== ACCOUNT DROPDOWN ====================
+function setupAccountDropdown() {
+  const accountIcon = document.getElementById("account-icon");
+  const accountDropdown = document.getElementById("account-dropdown");
+
+  if (!accountIcon || !accountDropdown) return;
+
+  accountIcon.addEventListener("click", () => {
+    accountDropdown.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!accountIcon.contains(e.target) && !accountDropdown.contains(e.target)) {
+      accountDropdown.classList.add("hidden");
+    }
+  });
+}

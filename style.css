@@ -1049,3 +1049,134 @@ form button:hover {
   margin-top: 20px;         /* Space above the disclaimer */
   font-style: italic;       /* Italic to differentiate */
 }
+
+form {
+    max-width: 300px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 8px 0;
+}
+
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+.order-box {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.form-section {
+  max-width: 400px;
+  margin: 50px auto;
+  text-align: center;
+}
+
+.form-section h2 {
+  color: #e2b111;
+  margin-bottom: 20px;
+}
+
+form input {
+  width: 90%;
+  padding: 10px;
+  margin: 8px 0;
+  background: #111;
+  border: 1px solid #333;
+  color: #e2b111;
+}
+
+.btn-gold {
+  background-color: #e2b111;
+  color: #010101;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.form-link {
+  font-size: 0.9rem;
+  margin-top: 15px;
+}
+
+.orders-box {
+  background: #111;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.order-item {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+/* ACCOUNT ICON IN RIGHT ICONS AREA */
+.account-icon-container {
+  position: relative;
+  margin-right: 10px;
+}
+
+/* Gold + Black circular icon */
+.account-icon {
+  font-size: 1.6rem;
+  padding: 6px;
+  color: #e2b111;
+  border: 2px solid #e2b111;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.account-icon:hover {
+  background: #e2b111;
+  color: #000;
+}
+
+/* DROPDOWN MENU (Premium Theme) */
+.account-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background: #000;
+  border: 1px solid #e2b111;
+  border-radius: 10px;
+  width: 160px;
+  padding: 8px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  z-index: 9999;
+  animation: dropdownFade 0.2s ease-in-out;
+}
+
+/* Dropdown links */
+.account-dropdown a {
+  display: block;
+  padding: 10px 15px;
+  color: #e2b111;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.account-dropdown a:hover {
+  background: #111;
+}
+
+/* Smooth fade animation */
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hidden {
+  display: none;
+}

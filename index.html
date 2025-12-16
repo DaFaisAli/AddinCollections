@@ -8,56 +8,75 @@
 </head>
 <body>
 
-  <!-- Top Banner -->
-  <div class="top-banner">
-    Free Delivery with orders over £40
+<!-- Top Banner -->
+<div class="top-banner">
+  Free Delivery with orders over £40
+</div>
+
+<!-- Header / Navbar -->
+<header class="navbar">
+  <!-- Logo centered -->
+  <div class="logo">
+    <a href="index.html">
+      <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
+    </a>
   </div>
 
-  <!-- Header / Navbar -->
-  <header class="navbar">
-    <!-- Logo centered -->
-    <div class="logo">
-      <a href="index.html">
-        <img src="pics/Logo.png" alt="Ad-Din Collections Logo" class="logo-img">
-      </a>
-    </div>
+  <!-- Navigation links and right icons -->
+  <div class="nav-container">
+    <nav class="nav-links">
+      <a href="Fragrances.html">Fragrances</a>
+      <a href="Oud.html">Oud</a>
 
-    <!-- Navigation links and right icons -->
-    <div class="nav-container">
-      <nav class="nav-links">
-        <a href="Fragrances.html">Fragrances</a>
-        <a href="Oud.html">Oud</a>
-        <div class="dropdown">
-          <span class="dropbtn">Thobes ▾</span>
-          <div class="dropdown-content">
-            <a href="moroccan-thobes.html">Moroccan Thobes</a>
-            <a href="saudi-thobes.html">Saudi Thobes</a>
-          </div>
+      <div class="dropdown">
+        <span class="dropbtn">Thobes ▾</span>
+        <div class="dropdown-content">
+          <a href="moroccan-thobes.html">Moroccan Thobes</a>
+          <a href="saudi-thobes.html">Saudi Thobes</a>
         </div>
-        <a href="Candles.html">Candles</a>
-        <a href="Keffiyehs.html">Keffiyehs</a>
-        <div class="dropdown">
-          <span class="dropbtn">Accessories ▾</span>
-          <div class="dropdown-content">
-            <a href="car-diffuser.html">Car Diffuser</a>
-          </div>
-        </div> 
-        <a href="Giftsets.html">Giftsets</a>
-        <a href="Bundles.html">Bundles</a>
-      </nav>
-
-      <div class="right-icons">
-        <div class="search-container">
-          <button id="search-toggle" class="search-icon">🔍</button>
-          <form id="search-form" class="search-bar hidden">
-            <input type="text" id="search-input" placeholder="Search products..." />
-            <button type="submit">🔍</button>
-          </form>
-        </div>
-        <a href="cart.html" id="cart-icon">🛒 <span id="nav-cart-count">0</span></a>
       </div>
+
+      <a href="Candles.html">Candles</a>
+      <a href="Keffiyehs.html">Keffiyehs</a>
+
+      <div class="dropdown">
+        <span class="dropbtn">Accessories ▾</span>
+        <div class="dropdown-content">
+          <a href="car-diffuser.html">Car Diffuser</a>
+        </div>
+      </div> 
+
+      <a href="Giftsets.html">Giftsets</a>
+      <a href="Bundles.html">Bundles</a>
+    </nav>
+
+    <!-- USER ACCOUNT ICON (TOP RIGHT) -->
+<div class="account-icon-container">
+  <div id="account-icon" class="account-icon">👤</div>
+
+  <!-- Dropdown Menu -->
+  <div id="account-dropdown" class="account-dropdown hidden">
+    <a href="login.html" class="logged-out">Login</a>
+    <a href="register.html" class="logged-out">Register</a>
+    <a href="orders.html" class="logged-in">My Orders</a>
+    <a href="#" id="logout-btn" class="logged-in">Logout</a>
+  </div>
+</div>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <button id="search-toggle" class="search-icon">🔍</button>
+        <form id="search-form" class="search-bar hidden">
+          <input type="text" id="search-input" placeholder="Search products..." />
+          <button type="submit">🔍</button>
+        </form>
+      </div>
+
+      <!-- Cart Icon -->
+      <a href="cart.html" id="cart-icon">🛒 <span id="nav-cart-count">0</span></a>
     </div>
-  </header>
+  </div>
+</header>
 
   <script src="script.js"></script>
 </body>
